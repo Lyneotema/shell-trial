@@ -1,7 +1,4 @@
-_envi_ron.c
-
 #include "shell.h"
-
 /**
  * _myenv -  Current environment is printed
  * @info: Struct with arguments and ensures prototype

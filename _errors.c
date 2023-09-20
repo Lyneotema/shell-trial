@@ -1,14 +1,12 @@
 #include "shell.h"
-
 /**
- * _eputs - input string is Printed
- * @str: The input string printed
- *
- * Return: NILL or Nothing
- **/
+ * _eputs - PRINTS an input string
+ * @str: String to Print.
+ * Return: nothing
+ */
 void _eputs(char *str)
 {
-	int v = 0;
+	int i = 0;
 
 	if (!str)
 		return;
@@ -20,21 +18,20 @@ void _eputs(char *str)
 }
 
 /**
- * _eputchar - Character is written to stderr
- * @c:  Character to output
- *
- * Return: 1 for success
- * Upon error show -1 then set errno accordingly
- **/
+ * _eputchar - Write char. c to stderr
+ * @c: Char to Print.
+ * Return: 1 on success
+ * On error, -1 is returned, and errno is set effectively
+ */
 int _eputchar(char c)
 {
-	static int f;
+	static int i;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || f >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		write(2, buf, f);
-		f = 0;
+		write(2, buf, i);
+		i = 0;
 	}
 	if (c != BUF_FLUSH)
 		buf[i++] = c;
@@ -42,18 +39,18 @@ int _eputchar(char c)
 }
 
 /**
- * _putfd - Write character to specified fd
- * @c: Character for print
- * @fd:   descriptor File to write and print to
- * Return: 1 upon success -1 for failure and error
- * then errno is set
+ * _putfd - Write char. c to given filedescriptor
+ * @c: Char. to print
+ * @fd: Filedescriptor to write to.
+ * Return: Success 1
+ * On error, -1 is returned, & errno is set appropriately.
  */
 int _putfd(char c, int fd)
 {
-	static int h;
+	static int i;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || h >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
 		write(fd, buf, i);
 		i = 0;
@@ -64,15 +61,14 @@ int _putfd(char c, int fd)
 }
 
 /**
- * _putsfd - input string printer
- * @str: String to prinT
- * @fd:  File Descriptor to write on
- *
- * Return: Number of characters put
+ * _putsfd - Prints Input String
+ * @str: String to print
+ * @fd: Filedescriptor To write To.
+ * Return: no. of character put
  */
 int _putsfd(char *str, int fd)
 {
-	int p = 0;
+	int i = 0;
 
 	if (!str)
 		return (0);
@@ -80,6 +76,6 @@ int _putsfd(char *str, int fd)
 	{
 		i += _putfd(*str++, fd);
 	}
-	return (p);
+	return (i);
 }
 
