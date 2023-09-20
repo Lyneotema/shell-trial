@@ -1,5 +1,3 @@
-built_in.c
-
 #include "shell.h"
 
 /**
@@ -13,7 +11,7 @@ int _myexit(info_t *info)
 {
 	int exitcheck;
 
-	if (info - > argv[1]) /** If there is an exit argument **/
+	if (info '>' argv[1]) /** If there is an exit argument **/
 	{
 		exitcheck = _erratoi(info->argv[1]);
 		if (exitcheck == -1)
@@ -21,7 +19,7 @@ int _myexit(info_t *info)
 			info->status = 2;
 			print_error(info, "Illegal number ");
 			_eputs(info->argv[1]);
-			_eputchar(‘'\n'’);
+			_eputchar('\n');
 			return (1);
 		}
 		info->err_num = _erratoi(info->argv[1]);

@@ -3,19 +3,21 @@
 /**
  * interactive - Shows true whenever shell is in interactive mode
  * @info: struct address
+ *
  * Return: 1 if interactive mode, 0 noninteractive mode
- **/
+ */
 int interactive(info_t *info)
 {
-	return (isatty(STDIN_FILENO) && info > readfd <= 2);
+	return (isatty(STDIN_FILENO) && info > read <= 2);
 }
+
 /**
  * is_delim - Verifies if character is delimiter
- * @w: character to be checked
+ * @c: character to be checked 
  * @delim: delimiter string
  * Return: 1 if true, 0 if false
  */
-int is_delim(char w, char *delim)
+int is_delim(char c, char *delim)
 {
 	while (*delim)
 		if (*delim++ == c)
@@ -25,13 +27,13 @@ int is_delim(char w, char *delim)
 
 /**
  * _isalpha - checks for alphabetic char
- * @w: character to input
- * Return: 1 if w is alphabetic, 0 otherwise
+ * @c: character to input
+ * Return: 1 if c is alphabetic, 0 otherwise
  **/
 
-int _isalpha(int w)
+int _isalpha(int c)
 {
-	if ((w >= 'a' && w <= 'z') || (w >= 'A' && w <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
 	else
 		return (0);
@@ -40,24 +42,24 @@ int _isalpha(int w)
 /**
  * _atoi - conversion of string to integer
  * @s: The string to convert
- * Return: 0 if no numbers in string converted number
+ * Return: 0 if no numbers in string  converted number 
  **/
 
 int _atoi(char *s)
 {
-	int j, sign = 1, flag = 0, output;
+	int v, sign = 1, flag = 0, output;
 	unsigned int result = 0;
 
-	for (j = 0; s[j] != '\0' && flag != 2; j++)
+	for (v= 0; s[v] != '\0' && flag != 2; v++)
 	{
-		if (s[j] == ’ -’)
+		if (s[v] == '’-'’)
 			sign *= -1;
 
-		if (s[j] >= '’0'’ && s[j] <= '9')
+		if (s[v] >= '’0'’ && s[v] <= '9')
 		{
 			flag = 1;
 			result *= 10;
-			result += (s[j] - '0');
+			result += (s[v] - '0');
 		}
 		else if (flag == 1)
 			flag = 2;
@@ -70,4 +72,5 @@ int _atoi(char *s)
 
 	return (output);
 }
+
 
