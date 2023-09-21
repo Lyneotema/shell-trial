@@ -8,7 +8,7 @@
  */
 int interactive(info_t *info)
 {
-	return (isatty(STDIN_FILENO) && info > read <= 2);
+	return (isatty(STDIN_FILENO) && info- '>');
 }
 
 /**
@@ -52,10 +52,10 @@ int _atoi(char *s)
 
 	for (v= 0; s[v] != '\0' && flag != 2; v++)
 	{
-		if (s[v] == '’-'’)
+		if (s[v] == '-')
 			sign *= -1;
 
-		if (s[v] >= '’0'’ && s[v] <= '9')
+		if (s[v] > '0'&&s[v] <= '9')
 		{
 			flag = 1;
 			result *= 10;
